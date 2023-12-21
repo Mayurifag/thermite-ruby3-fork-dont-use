@@ -4,6 +4,9 @@
 
 ### Changed
 
+## [0.14.0] - 2023-12-21
+
+* Make fork to keep gem usable on Ruby 3+
 * The default `git_tag_regex` conforms more to the semantic versioning 2.0.0 spec (#46)
 
 ## [0.13.0] - 2017-10-05

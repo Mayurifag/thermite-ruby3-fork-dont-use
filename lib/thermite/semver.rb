@@ -25,26 +25,26 @@ module Thermite
     #
     # Valid version number part (major/minor/patch).
     #
-    NUMERIC = '(?:0|[1-9]\d*)'.freeze
+    NUMERIC = '(?:0|[1-9]\d*)'
 
     #
     # Valid identifier for pre-release versions or build metadata.
     #
-    IDENTIFIER = '[-0-9A-Za-z][-0-9A-Za-z.]*'.freeze
+    IDENTIFIER = '[-0-9A-Za-z][-0-9A-Za-z.]*'
 
     #
     # Version pre-release section, including the hyphen.
     #
-    PRERELEASE = "-#{IDENTIFIER}".freeze
+    PRERELEASE = "-#{IDENTIFIER}"
 
     #
     # Version build metadata section, including the plus sign.
     #
-    BUILD_METADATA = "\\+#{IDENTIFIER}".freeze
+    BUILD_METADATA = "\\+#{IDENTIFIER}"
 
     #
     # Semantic version-compliant regular expression.
     #
-    VERSION = "v?#{NUMERIC}\.#{NUMERIC}\.#{NUMERIC}(?:#{PRERELEASE})?(?:#{BUILD_METADATA})?".freeze
+    VERSION = "v?#{NUMERIC}\.#{NUMERIC}\.#{NUMERIC}(?:#{PRERELEASE})?(?:#{BUILD_METADATA})?"
   end
 end

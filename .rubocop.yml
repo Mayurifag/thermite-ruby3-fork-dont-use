@@ -1,13 +1,9 @@
 AllCops:
   Exclude:
-  - 'vendor/**/*'
-  TargetRubyVersion: 2.1
+    - "vendor/**/*"
+  TargetRubyVersion: 2.7
 
 Layout/EmptyLineAfterMagicComment:
-  Enabled: false
-
-# When support for Ruby < 2.3 is dropped, re-enable
-Layout/IndentHeredoc:
   Enabled: false
 
 Lint/EndAlignment:
@@ -19,15 +15,15 @@ Metrics/AbcSize:
 
 Metrics/ClassLength:
   Exclude:
-  - 'test/**/*'
+    - "test/**/*"
   Max: 150
 
 Metrics/LineLength:
   Max: 100
   AllowURI: true
   URISchemes:
-  - http
-  - https
+    - http
+    - https
 
 Metrics/MethodLength:
   Max: 20

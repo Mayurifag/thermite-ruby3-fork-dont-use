@@ -47,14 +47,12 @@ module Thermite
     # The file extension of the compiled shared Rust library.
     #
     def shared_ext
-      @shared_ext ||= begin
-        if dlext == 'bundle'
-          'dylib'
-        elsif Gem.win_platform?
-          'dll'
-        else
-          dlext
-        end
+      @shared_ext ||= if dlext == 'bundle'
+        'dylib'
+      elsif Gem.win_platform?
+        'dll'
+      else
+        dlext
       end
     end
 
@@ -232,12 +230,10 @@ module Thermite
     # tarballs are supposed to match. Defaults to `DEFAULT_TAG_REGEX`.
     #
     def git_tag_regex
-      @git_tag_regex ||= begin
-        if @options[:git_tag_regex]
-          Regexp.new(@options[:git_tag_regex])
-        else
-          DEFAULT_TAG_REGEX
-        end
+      @git_tag_regex ||= if @options[:git_tag_regex]
+        Regexp.new(@options[:git_tag_regex])
+      else
+        DEFAULT_TAG_REGEX
       end
     end
 
@@ -259,14 +255,12 @@ module Thermite
     # The Thermite-specific config from the TOML file.
     #
     def toml_config
-      @toml_config ||= begin
-        # Not using .dig to be Ruby < 2.3 compatible
-        if toml && toml[:package] && toml[:package][:metadata] &&
-           toml[:package][:metadata][:thermite]
-          toml[:package][:metadata][:thermite]
-        else
-          {}
-        end
+      # Not using .dig to be Ruby < 2.3 compatible
+      @toml_config ||= if toml && toml[:package] && toml[:package][:metadata] &&
+                          toml[:package][:metadata][:thermite]
+        toml[:package][:metadata][:thermite]
+      else
+        {}
       end
     end
 

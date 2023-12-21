@@ -76,6 +76,7 @@ module Thermite
           tar.each do |entry|
             path = entry.header.name
             next if path.end_with?('/')
+
             yield path, entry
           end
         end

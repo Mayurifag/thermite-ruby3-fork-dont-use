@@ -55,9 +55,7 @@ module Thermite
     def download_cargo_version_from_github_release
       version = config.crate_version
       # TODO: Change this to a named token and increment the 0.minor version
-      # rubocop:disable Style/FormatStringToken
       tag = options.fetch(:git_tag_format, 'v%s') % version
-      # rubocop:enable Style/FormatStringToken
       uri = github_download_uri(tag, version)
       return false unless (tgz = download_versioned_github_release_binary(uri, version))
 
@@ -76,6 +74,7 @@ module Thermite
       each_github_release(github_uri) do |version, download_uri|
         tgz = download_versioned_github_release_binary(download_uri, version)
         next unless tgz
+
         debug "Unpacking GitHub release: #{File.basename(download_uri)}"
         unpack_tarball(tgz)
         prepare_downloaded_library
@@ -106,6 +105,7 @@ module Thermite
       REXML::XPath.each(feed, '//entry/title/text()') do |tag|
         match = config.git_tag_regex.match(tag.to_s)
         next unless match
+
         version = match[1]
 
         yield(version, github_download_uri(tag, version))

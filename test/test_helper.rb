@@ -48,6 +48,7 @@ module Thermite
 
   module TestHelper
     attr_reader :config, :options
+
     def initialize(options = {})
       @options = options
       @config = Thermite::Config.new(@options)
